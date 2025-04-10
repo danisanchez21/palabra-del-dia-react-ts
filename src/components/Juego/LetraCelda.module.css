@@ -18,17 +18,17 @@
   }
   
   .correcta {
-    background-color: green;
+    background-color: #00A63E;
     color: white;
   }
   
   .casi {
-    background-color: goldenrod;
+    background-color: #DAA520;
     color: white;
   }
   
   .incorrecta {
-    background-color: #444;
+    background-color: #364153;
     color: white;
   }
   
