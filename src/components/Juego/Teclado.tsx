@@ -1,11 +1,11 @@
 import BotonTecla from './BotonTecla';
-import styles from './Teclado.module.css'; // ✅ esta sí va
+import styles from './Teclado.module.css';
 
 interface Props {
   onTecla: (letra: string) => void;
   onBorrar: () => void;
   onEnter: () => void;
-  estados: Record<string, 'correcta' | 'casi' | 'incorrecta' | undefined>;
+  estados: Record<string, 'correcta' | 'casi' | 'incorrecta' | 'pendiente' | undefined>;
 }
 
 const filas = [

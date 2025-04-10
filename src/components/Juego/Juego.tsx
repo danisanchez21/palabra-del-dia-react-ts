@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { fetchPalabraDelDia } from '../../services/fakeApi';
-import { PalabraDelDia } from '../../types/palabra';
 import Grid from './Grid';
 import Teclado from './Teclado';
 
@@ -18,7 +17,6 @@ function validarIntento(palabra: string, intento: string[]): LetraIntento[] {
   const letrasObjetivo = palabra.split('');
   const letrasEvaluadas = [...letrasObjetivo];
 
-  // Paso 1: letras correctas
   intento.forEach((letra, i) => {
     if (letra === letrasObjetivo[i]) {
       resultado[i] = { letra, estado: 'correcta' };
@@ -28,8 +26,7 @@ function validarIntento(palabra: string, intento: string[]): LetraIntento[] {
     }
   });
 
-  // Paso 2: letras casi
-  resultado.forEach((item, i) => {
+  resultado.forEach((item) => {
     if (item.estado === 'pendiente') {
       const index = letrasEvaluadas.indexOf(item.letra);
       if (index !== -1) {
@@ -46,28 +43,58 @@ function validarIntento(palabra: string, intento: string[]): LetraIntento[] {
 
 const Juego: React.FC = () => {
   const [palabraDelDia, setPalabraDelDia] = useState<string>('');
+  const [definicion, setDefinicion] = useState<string | null>(null); // ✅ 1. Añadimos estado para la definición
   const [intentos, setIntentos] = useState<LetraIntento[][]>([]);
   const [intentoActual, setIntentoActual] = useState<string[]>([]);
   const [filaActual, setFilaActual] = useState(0);
   const [estadoJuego, setEstadoJuego] = useState<'jugando' | 'ganado' | 'perdido'>('jugando');
-  const [teclasEstado, setTeclasEstado] = useState<Record<string, EstadoLetra>>({});
+  const [teclasEstado, setTeclasEstado] = useState<Record<string, EstadoLetra | undefined>>({});
 
   useEffect(() => {
     fetchPalabraDelDia().then((data) => {
       setPalabraDelDia(data.palabra.toUpperCase());
+      setDefinicion(data.definicion ?? null); // ✅ Guardamos definición también
     });
   }, []);
+
+  // ✅ 2. Función para reiniciar el juego
+  const reiniciarJuego = () => {
+    setIntentos([]);
+    setIntentoActual([]);
+    setFilaActual(0);
+    setEstadoJuego('jugando');
+    setTeclasEstado({});
+
+    fetchPalabraDelDia().then((data) => {
+      setPalabraDelDia(data.palabra.toUpperCase());
+      setDefinicion(data.definicion ?? null);
+    });
+  };
 
   return (
     <div>
       <h2>La Palabra del Día</h2>
+
+      {/* Mensaje según el estado del juego */}
       <p>
         {estadoJuego === 'jugando'
           ? '¡Intenta adivinar!'
           : estadoJuego === 'ganado'
-          ? '¡Has ganado!'
-          : `Perdiste. Era ${palabraDelDia}`}
+          ? `🎉 ¡Muy bien, has ganado! Efectivamente es ${palabraDelDia}`
+          : `❌ Upss, has perdido. La palabra correcta es ${palabraDelDia}`}
       </p>
+
+      {/*  Mostrar la definición si termina el juego */}
+      {estadoJuego !== 'jugando' && definicion && (
+        <p><strong>Definición:</strong> {definicion}</p>
+      )}
+
+      {/*  Botón para reiniciar el juego */}
+      {estadoJuego !== 'jugando' && (
+        <button onClick={reiniciarJuego} style={{ marginTop: '1rem' }}>
+          🔁 Reiniciar juego
+        </button>
+      )}
 
       <Grid
         intentos={intentos}
