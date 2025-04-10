@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import PantallaInicio from './components/PantallaInicio';
+import Juego from './components/Juego/Juego';
+
 
 function App() {
   const [juegoIniciado, setJuegoIniciado] = useState(false);
@@ -7,7 +9,7 @@ function App() {
   return (
     <div className="App">
       {juegoIniciado ? (
-        <p>Componente del juego</p>
+        <Juego />
       ) : (
         <PantallaInicio onJugar={() => setJuegoIniciado(true)} />
       )}
