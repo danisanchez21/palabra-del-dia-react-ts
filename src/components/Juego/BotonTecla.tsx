@@ -1,10 +1,13 @@
 import styles from './BotonTecla.module.css';
 
+type EstadoLetra = 'correcta' | 'casi' | 'incorrecta' | 'pendiente';
+
 interface Props {
   valor: string;
   onClick: () => void;
-  estado?: 'correcta' | 'casi' | 'incorrecta';
+  estado?: EstadoLetra; // <- Añade el signo de interrogación
 }
+
 
 const BotonTecla: React.FC<Props> = ({ valor, onClick, estado }) => {
   return (
