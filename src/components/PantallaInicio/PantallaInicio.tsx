@@ -20,6 +20,10 @@ const PantallaInicio: React.FC<Props> = ({ onJugar }) => {
         <span className={styles.cajaVerde}>R</span>
         <span className={styles.cajaVerde}>A</span>
         &nbsp;
+        <span className={styles.caja}>D</span>
+        <span className={styles.caja}>E</span>
+        <span className={styles.caja}>L</span>
+        &nbsp;
         <span className={styles.cajaAmarilla}>D</span>
         <span className={styles.cajaAmarilla}>Í</span>
         <span className={styles.cajaAmarilla}>A</span>
