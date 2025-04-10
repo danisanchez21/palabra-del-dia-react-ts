@@ -27,7 +27,7 @@ const PantallaInicio: React.FC<Props> = ({ onJugar }) => {
         <span className="bg-[#b59f3b] w-10 h-10 flex items-center justify-center font-bold text-lg rounded">Í</span>
         <span className="bg-[#b59f3b] w-10 h-10 flex items-center justify-center font-bold text-lg rounded">A</span>
       </h1>
-      <div className="text-left max-w-xl mx-auto mb-8 space-y-4 leading-7.5">
+      <div className="text-left max-w-xl mx-auto mb-8 space-y-4 leading-5.5">
         <p>¿Listo para el reto? Tienes 6 intentos para descubrir la palabra secreta.</p>
         <p>
           Cada palabra que pruebes debe ser válida. Si no lo es, se te avisará para que lo intentes de nuevo.
@@ -36,7 +36,7 @@ const PantallaInicio: React.FC<Props> = ({ onJugar }) => {
           Al enviar una palabra, verás cómo cambian los colores de las letras. Esto te dará pistas sobre qué tan cerca estás de acertar:
         </p>
 
-        <ul className="space-y-1">
+        <ul className="space-y-1 leading-7">
           <li><span className="text-[#538d4e] font-bold">VERDE</span>: La letra está en el lugar <strong>exacto</strong>.</li>
           <li><span className="text-[#b59f3b] font-bold">AMARILLO</span>: La letra está en la palabra, pero en una <strong>posición distinta</strong>.</li>
           <li><span className="text-[#787c7e] font-bold">GRIS</span>: Esa letra <strong>no aparece</strong> en la palabra.</li>
