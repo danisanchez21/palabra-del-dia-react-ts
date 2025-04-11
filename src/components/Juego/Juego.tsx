@@ -53,11 +53,62 @@ const Juego: React.FC = () => {
   useEffect(() => {
     fetchPalabraDelDia().then((data) => {
       setPalabraDelDia(data.palabra.toUpperCase());
-      setDefinicion(data.definicion ?? null); // ✅ Guardamos definición también
+      setDefinicion(data.definicion ?? null); // Guardamos definición también
     });
   }, []);
 
-  // ✅ 2. Función para reiniciar el juego
+  useEffect(() => {
+    const manejarTecla = (e: KeyboardEvent) => {
+      if (estadoJuego !== 'jugando') return;
+  
+      const tecla = e.key.toUpperCase();
+  
+      if (tecla === 'ENTER') {
+        // Pulsó Enter
+        if (intentoActual.length === palabraDelDia.length) {
+          const resultado = validarIntento(palabraDelDia, intentoActual);
+          const nuevosIntentos = [...intentos, resultado];
+          setIntentos(nuevosIntentos);
+  
+          const nuevosEstados = { ...teclasEstado };
+          resultado.forEach(({ letra, estado }) => {
+            const estadoActual = nuevosEstados[letra];
+            const prioridad = { 'correcta': 3, 'casi': 2, 'incorrecta': 1, 'pendiente': 0 };
+            if (!estadoActual || prioridad[estado] > prioridad[estadoActual]) {
+              nuevosEstados[letra] = estado;
+            }
+          });
+          setTeclasEstado(nuevosEstados);
+  
+          if (resultado.every((l) => l.estado === 'correcta')) {
+            setEstadoJuego('ganado');
+            return;
+          }
+  
+          if (nuevosIntentos.length >= MAX_INTENTOS) {
+            setEstadoJuego('perdido');
+            return;
+          }
+  
+          setFilaActual(filaActual + 1);
+          setIntentoActual([]);
+        }
+      } else if (tecla === 'BACKSPACE') {
+        // Pulsó borrar
+        setIntentoActual((prev) => prev.slice(0, -1));
+      } else if (/^[A-ZÑ]$/.test(tecla)) {
+        // Pulsó una letra
+        if (intentoActual.length < palabraDelDia.length) {
+          setIntentoActual((prev) => [...prev, tecla]);
+        }
+      }
+    };
+  
+    window.addEventListener('keydown', manejarTecla);
+    return () => window.removeEventListener('keydown', manejarTecla);
+  }, [estadoJuego, intentoActual, palabraDelDia, filaActual, intentos, teclasEstado]);
+  
+  // Función para reiniciar el juego
   const reiniciarJuego = () => {
     setIntentos([]);
     setIntentoActual([]);
