@@ -11,6 +11,7 @@ const BotonTecla: React.FC<Props> = ({ valor, onClick, estado }) => {
     correcta: "bg-green-600",
     casi: "bg-yellow-600",
     incorrecta: "bg-gray-800",
+    pendiente: "bg-[#666]",
   };
 
   return (
