@@ -1,5 +1,4 @@
 import Fila from './Fila';
-import styles from './Grid.module.css';
 
 type EstadoLetra = 'correcta' | 'casi' | 'incorrecta' | 'pendiente';
 
@@ -40,7 +39,7 @@ const Grid: React.FC<Props> = ({ intentos, intentoActual, filaActual, longitudPa
   };
 
   return (
-    <div className={styles.grid}>
+    <div className="flex flex-col items-center gap-[0.2rem] mt-8">
       {renderFilas().map((fila, i) => (
         <Fila key={i} letras={fila} />
       ))}

@@ -1,5 +1,4 @@
 import BotonTecla from './BotonTecla';
-import styles from './Teclado.module.css';
 
 interface Props {
   onTecla: (letra: string) => void;
@@ -16,9 +15,9 @@ const filas = [
 
 const Teclado: React.FC<Props> = ({ onTecla, onBorrar, onEnter, estados }) => {
   return (
-    <div className={styles.teclado}>
+    <div className="flex flex-col items-center mt-7 gap-2">
       {filas.map((fila, i) => (
-        <div key={i} className={styles.fila}>
+        <div key={i} className="flex justify-center gap-1">
           {fila.map((tecla) => (
             <BotonTecla
               key={tecla}

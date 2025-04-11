@@ -72,17 +72,37 @@ const Juego: React.FC = () => {
   };
 
   return (
-    <div>
-      <h2>La Palabra del Día</h2>
+    
+    <div className="text-white max-w-xl mx-auto text-center space-y-4 px-4">
+    <h2 className="text-2xl font-bold">La Palabra del Día</h2>
 
       {/* Mensaje según el estado del juego */}
-      <p>
-        {estadoJuego === 'jugando'
-          ? '¡Intenta adivinar!'
-          : estadoJuego === 'ganado'
-          ? `🎉 ¡Muy bien, has ganado! Efectivamente es ${palabraDelDia}`
-          : `❌ Upss, has perdido. La palabra correcta es ${palabraDelDia}`}
-      </p>
+      <p
+  className={
+    estadoJuego === 'ganado'
+      ? "bg-green-100 text-green-700 border border-green-400 rounded p-4 text-lg font-medium"
+      : estadoJuego === 'perdido'
+      ? "bg-red-100 text-red-700 border border-red-400 rounded p-4 text-lg font-medium"
+      : "text-white text-lg"
+  }
+>
+  {estadoJuego === 'jugando' ? (
+    '¡Intenta adivinar!'
+  ) : estadoJuego === 'ganado' ? (
+    <>
+      🎉 ¡Muy bien, has ganado! Efectivamente es{' '}
+      <span className="font-bold">{palabraDelDia}</span>
+    </>
+  ) : (
+    <>
+      ❌ Upss, has perdido. La palabra correcta es{' '}
+      <span className="font-bold">{palabraDelDia}</span>
+    </>
+  )}
+</p>
+
+
+
 
       {/*  Mostrar la definición si termina el juego */}
       {estadoJuego !== 'jugando' && definicion && (
@@ -91,9 +111,12 @@ const Juego: React.FC = () => {
 
       {/*  Botón para reiniciar el juego */}
       {estadoJuego !== 'jugando' && (
-        <button onClick={reiniciarJuego} style={{ marginTop: '1rem' }}>
-          🔁 Reiniciar juego
-        </button>
+  <button
+  onClick={reiniciarJuego}
+  className="mt-4 bg-blue-600 hover:bg-blue-400 text-white px-4 py-2 rounded transition"
+>
+  🔁 Reiniciar juego
+</button>
       )}
 
       <Grid
