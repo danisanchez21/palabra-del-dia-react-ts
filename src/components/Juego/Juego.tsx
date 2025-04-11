@@ -2,6 +2,7 @@ import { useEffect, useState, useCallback } from 'react';
 import { fetchPalabraDelDia } from '../../services/fakeApi';
 import Grid from './Grid';
 import Teclado from './Teclado';
+import confetti from 'canvas-confetti';
 
 type EstadoLetra = 'correcta' | 'casi' | 'incorrecta' | 'pendiente';
 
@@ -107,6 +108,16 @@ const Juego: React.FC = () => {
     return () => window.removeEventListener('keydown', manejarTecla);
   }, [estadoJuego, intentoActual.length, palabraDelDia.length, procesarIntento]);
 
+  useEffect(() => {
+    if (estadoJuego === 'ganado') {
+      confetti({
+        particleCount: 100,
+        spread: 70,
+        origin: { y: 0.6 }
+      });
+    }
+  }, [estadoJuego]);
+  
   const reiniciarJuego = () => {
     setIntentos([]);
     setIntentoActual([]);
