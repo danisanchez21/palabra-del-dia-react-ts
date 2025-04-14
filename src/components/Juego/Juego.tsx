@@ -4,6 +4,10 @@ import Grid from './Grid';
 import Teclado from './Teclado';
 import confetti from 'canvas-confetti';
 
+type JuegoProps = {
+  dificultad: 'facil' | 'normal' | 'dificil';
+};
+
 type EstadoLetra = 'correcta' | 'casi' | 'incorrecta' | 'pendiente';
 
 interface LetraIntento {
@@ -42,7 +46,8 @@ function validarIntento(palabra: string, intento: string[]): LetraIntento[] {
   return resultado;
 }
 
-const Juego: React.FC = () => {
+const Juego: React.FC<JuegoProps> = ({ dificultad }) => {
+
   const [palabraDelDia, setPalabraDelDia] = useState<string>('');
   const [definicion, setDefinicion] = useState<string | null>(null);
   const [intentos, setIntentos] = useState<LetraIntento[][]>([]);
@@ -81,12 +86,12 @@ const Juego: React.FC = () => {
   }, [palabraDelDia, intentoActual, intentos, teclasEstado]);
 
   useEffect(() => {
-    fetchPalabraDelDia().then((data) => {
+    fetchPalabraDelDia(dificultad).then((data) => {
       setPalabraDelDia(data.palabra.toUpperCase());
       setDefinicion(data.definicion ?? null);
     });
-  }, []);
-
+  }, [dificultad]);
+  
   useEffect(() => {
     const manejarTecla = (e: KeyboardEvent) => {
       if (estadoJuego !== 'jugando') return;
@@ -125,10 +130,12 @@ const Juego: React.FC = () => {
     setEstadoJuego('jugando');
     setTeclasEstado({});
 
-    fetchPalabraDelDia().then((data) => {
+    
+    fetchPalabraDelDia(dificultad).then((data) => {
       setPalabraDelDia(data.palabra.toUpperCase());
       setDefinicion(data.definicion ?? null);
     });
+    
   };
 
   return (

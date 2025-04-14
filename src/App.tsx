@@ -1,18 +1,24 @@
 import { useState } from 'react';
-import PantallaInicio from './components/PantallaInicio';
+import PantallaInicio from './components/PantallaInicio/PantallaInicio';
+import SelectorDificultad from './components/SelectorDificultad/SelectorDificultad';
 import Juego from './components/Juego/Juego';
 
-
 function App() {
-  const [juegoIniciado, setJuegoIniciado] = useState(false);
+  const [fase, setFase] = useState<'inicio' | 'selector' | 'juego'>('inicio');
+  const [dificultad, setDificultad] = useState<'facil' | 'normal' | 'dificil' | null>(null);
+
+  const iniciarSeleccionDificultad = () => setFase('selector');
+
+  const iniciarJuego = (nivel: 'facil' | 'normal' | 'dificil') => {
+    setDificultad(nivel);
+    setFase('juego');
+  };
 
   return (
     <div className="App">
-      {juegoIniciado ? (
-        <Juego />
-      ) : (
-        <PantallaInicio onJugar={() => setJuegoIniciado(true)} />
-      )}
+      {fase === 'inicio' && <PantallaInicio onJugar={iniciarSeleccionDificultad} />}
+      {fase === 'selector' && <SelectorDificultad onSeleccionarDificultad={iniciarJuego} />}
+      {fase === 'juego' && dificultad && <Juego dificultad={dificultad} />}
     </div>
   );
 }
