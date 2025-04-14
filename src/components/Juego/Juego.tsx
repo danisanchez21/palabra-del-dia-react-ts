@@ -21,12 +21,12 @@ const maxIntentosPorDificultad = {
   dificil: 4
 };
 
-// ✅ Función para quitar tildes
+// Función para quitar tildes
 function quitarTildes(str: string): string {
   return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
 }
 
-// ✅ Validación con comparación sin tildes
+// Validación con comparación sin tildes
 function validarIntento(palabra: string, intento: string[]): LetraIntento[] {
   const resultado: LetraIntento[] = [];
 
@@ -62,6 +62,7 @@ function validarIntento(palabra: string, intento: string[]): LetraIntento[] {
 }
 
 const Juego: React.FC<JuegoProps> = ({ dificultad }) => {
+  
   const MAX_INTENTOS = maxIntentosPorDificultad[dificultad];
 
   const [palabraDelDia, setPalabraDelDia] = useState<string>('');
@@ -166,7 +167,7 @@ const Juego: React.FC<JuegoProps> = ({ dificultad }) => {
         }
       >
         {estadoJuego === 'jugando' ? (
-          '¡Intenta adivinar!'
+          '¡Intenta adivinarla!'
         ) : estadoJuego === 'ganado' ? (
           <>
             🎉 ¡Muy bien, has ganado! Efectivamente es{' '}
@@ -194,11 +195,13 @@ const Juego: React.FC<JuegoProps> = ({ dificultad }) => {
       )}
 
       <Grid
-        intentos={intentos}
-        intentoActual={intentoActual}
-        filaActual={filaActual}
-        longitudPalabra={palabraDelDia.length}
+      intentos={intentos}
+      intentoActual={intentoActual}
+      filaActual={filaActual}
+      longitudPalabra={palabraDelDia.length}
+      maxIntentos={MAX_INTENTOS}
       />
+
 
       <Teclado
         onTecla={(letra) => {

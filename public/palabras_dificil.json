@@ -1,124 +1,122 @@
-{
-    "palabras": [
-        {
-            "palabra": "albahacas",
-            "definicion": "Planta aromática de hojas verdes y flores blancas o moradas, utilizada como condimento."
-        },
-        {
-            "palabra": "cumplimos",
-            "definicion": "Primera persona del plural del presente de indicativo del verbo 'cumplir', que significa llevar a efecto algo."
-        },
-        {
-            "palabra": "despierta",
-            "definicion": "Tercera persona del singular del presente de indicativo del verbo 'despertar', que significa interrumpir el sueño."
-        },
-        {
-            "palabra": "fantasmas",
-            "definicion": "Aparición o imagen de una persona muerta, que se manifiesta entre los vivos."
-        },
-        {
-            "palabra": "heredaron",
-            "definicion": "Tercera persona del plural del pretérito perfecto simple del verbo 'heredar', que significa recibir bienes por testamento o por ley."
-        },
-        {
-            "palabra": "impulsivo",
-            "definicion": "Que actúa de forma irreflexiva, dejándose llevar por impulsos."
-        },
-        {
-            "palabra": "jardinero",
-            "definicion": "Persona que cuida y cultiva un jardín."
-        },
-        {
-            "palabra": "lanzadora",
-            "definicion": "Persona que lanza o arroja algo, especialmente en deportes."
-        },
-        {
-            "palabra": "novedades",
-            "definicion": "Cosas nuevas o recientes."
-        },
-        {
-            "palabra": "oraciones",
-            "definicion": "Conjunto de palabras que expresan una idea completa."
-        },
-        {
-            "palabra": "pintorazo",
-            "definicion": "Golpe o mancha de pintura."
-        },
-        {
-            "palabra": "quimerosa",
-            "definicion": "Que tiene muchas quimeras o fantasías."
-        },
-        {
-            "palabra": "resbalado",
-            "definicion": "Participio del verbo 'resbalar', que significa deslizarse involuntariamente sobre una superficie."
-        },
-        {
-            "palabra": "separador",
-            "definicion": "Objeto o elemento que sirve para separar."
-        },
-        {
-            "palabra": "travesura",
-            "definicion": "Acción realizada por diversión que puede causar molestias o daños leves."
-        },
-        {
-            "palabra": "uniformes",
-            "definicion": "Vestimenta distintiva usada por miembros de una organización."
-        },
-        {
-            "palabra": "violencia",
-            "definicion": "Uso de la fuerza para conseguir un fin, especialmente para dominar a alguien o imponer algo."
-        },
-        {
-            "palabra": "zanahoria",
-            "definicion": "Raíz comestible de color anaranjado y sabor dulce, rica en vitamina A."
-        },
-        {
-            "palabra": "abrigarse",
-            "definicion": "Cubrirse con ropa para protegerse del frío."
-        },
-        {
-            "palabra": "beneficio",
-            "definicion": "Ganancia o provecho que se obtiene de algo."
-        },
-        {
-            "palabra": "colocarás",
-            "definicion": "Segunda persona del singular del futuro de indicativo del verbo 'colocar', que significa poner en su lugar."
-        },
-        {
-            "palabra": "decimales",
-            "definicion": "Relativo a la fracción que tiene por denominador una potencia de diez."
-        },
-        {
-            "palabra": "edificios",
-            "definicion": "Construcciones destinadas a ser habitadas o utilizadas para otros fines."
-        },
-        {
-            "palabra": "formacion",
-            "definicion": "Proceso de adquirir conocimientos o habilidades."
-        },
-        {
-            "palabra": "generador",
-            "definicion": "Dispositivo que convierte energía mecánica en eléctrica."
-        },
-        {
-            "palabra": "habitante",
-            "definicion": "Persona que vive en un lugar determinado."
-        },
-        {
-            "palabra": "iluminará",
-            "definicion": "Tercera persona del singular del futuro de indicativo del verbo 'iluminar', que significa dar luz."
-        },
-        {
-            "palabra": "caminante",
-            "definicion": "Persona que va a pie, especialmente si recorre largas distancias o lo hace con frecuencia."
-        },
-        {
-            "palabra": "cerámicas",
-            "definicion": "Objetos hechos de barro cocido o materiales similares, usados comúnmente en arte o construcción."
-        },
-        {
-            "palabra": "navegante",
-            "definicion": "Persona que navega o dirige una embarcación o aeronave."
-        }
-    ]
-}
+[
+    {
+        "palabra": "albahacas",
+        "definicion": "Planta aromática de hojas verdes y flores blancas o moradas, utilizada como condimento."
+    },
+    {
+        "palabra": "cumplimos",
+        "definicion": "Primera persona del plural del presente de indicativo del verbo 'cumplir', que significa llevar a efecto algo."
+    },
+    {
+        "palabra": "despierta",
+        "definicion": "Tercera persona del singular del presente de indicativo del verbo 'despertar', que significa interrumpir el sueño."
+    },
+    {
+        "palabra": "fantasmas",
+        "definicion": "Aparición o imagen de una persona muerta, que se manifiesta entre los vivos."
+    },
+    {
+        "palabra": "heredaron",
+        "definicion": "Tercera persona del plural del pretérito perfecto simple del verbo 'heredar', que significa recibir bienes por testamento o por ley."
+    },
+    {
+        "palabra": "impulsivo",
+        "definicion": "Que actúa de forma irreflexiva, dejándose llevar por impulsos."
+    },
+    {
+        "palabra": "jardinero",
+        "definicion": "Persona que cuida y cultiva un jardín."
+    },
+    {
+        "palabra": "lanzadora",
+        "definicion": "Persona que lanza o arroja algo, especialmente en deportes."
+    },
+    {
+        "palabra": "novedades",
+        "definicion": "Cosas nuevas o recientes."
+    },
+    {
+        "palabra": "oraciones",
+        "definicion": "Conjunto de palabras que expresan una idea completa."
+    },
+    {
+        "palabra": "pintorazo",
+        "definicion": "Golpe o mancha de pintura."
+    },
+    {
+        "palabra": "quimerosa",
+        "definicion": "Que tiene muchas quimeras o fantasías."
+    },
+    {
+        "palabra": "resbalado",
+        "definicion": "Participio del verbo 'resbalar', que significa deslizarse involuntariamente sobre una superficie."
+    },
+    {
+        "palabra": "separador",
+        "definicion": "Objeto o elemento que sirve para separar."
+    },
+    {
+        "palabra": "travesura",
+        "definicion": "Acción realizada por diversión que puede causar molestias o daños leves."
+    },
+    {
+        "palabra": "uniformes",
+        "definicion": "Vestimenta distintiva usada por miembros de una organización."
+    },
+    {
+        "palabra": "violencia",
+        "definicion": "Uso de la fuerza para conseguir un fin, especialmente para dominar a alguien o imponer algo."
+    },
+    {
+        "palabra": "zanahoria",
+        "definicion": "Raíz comestible de color anaranjado y sabor dulce, rica en vitamina A."
+    },
+    {
+        "palabra": "abrigarse",
+        "definicion": "Cubrirse con ropa para protegerse del frío."
+    },
+    {
+        "palabra": "beneficio",
+        "definicion": "Ganancia o provecho que se obtiene de algo."
+    },
+    {
+        "palabra": "colocarás",
+        "definicion": "Segunda persona del singular del futuro de indicativo del verbo 'colocar', que significa poner en su lugar."
+    },
+    {
+        "palabra": "decimales",
+        "definicion": "Relativo a la fracción que tiene por denominador una potencia de diez."
+    },
+    {
+        "palabra": "edificios",
+        "definicion": "Construcciones destinadas a ser habitadas o utilizadas para otros fines."
+    },
+    {
+        "palabra": "formacion",
+        "definicion": "Proceso de adquirir conocimientos o habilidades."
+    },
+    {
+        "palabra": "generador",
+        "definicion": "Dispositivo que convierte energía mecánica en eléctrica."
+    },
+    {
+        "palabra": "habitante",
+        "definicion": "Persona que vive en un lugar determinado."
+    },
+    {
+        "palabra": "iluminará",
+        "definicion": "Tercera persona del singular del futuro de indicativo del verbo 'iluminar', que significa dar luz."
+    },
+    {
+        "palabra": "caminante",
+        "definicion": "Persona que va a pie, especialmente si recorre largas distancias o lo hace con frecuencia."
+    },
+    {
+        "palabra": "cerámicas",
+        "definicion": "Objetos hechos de barro cocido o materiales similares, usados comúnmente en arte o construcción."
+    },
+    {
+        "palabra": "navegante",
+        "definicion": "Persona que navega o dirige una embarcación o aeronave."
+    }
+]
