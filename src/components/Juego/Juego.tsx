@@ -18,7 +18,7 @@ interface LetraIntento {
 const maxIntentosPorDificultad = {
   facil: 6,
   normal: 5,
-  dificil: 4
+  dificil: 7
 };
 
 // Función para quitar tildes
