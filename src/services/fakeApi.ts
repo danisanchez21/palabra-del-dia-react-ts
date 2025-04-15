@@ -1,8 +1,18 @@
-import { PalabraDelDia } from '../types/palabra';
+export async function fetchPalabraDelDia(dificultad: 'facil' | 'normal' | 'dificil') {
+  const archivosPorDificultad = {
+    facil: '/palabras_facil.json',
+    normal: '/palabras_normal.json',
+    dificil: '/palabras_dificil.json',
+  };
 
-export const fetchPalabraDelDia = async (): Promise<PalabraDelDia> => {
-  const res = await fetch('/palabra.json');
-  const lista: PalabraDelDia[] = await res.json();
-  const aleatoria = lista[Math.floor(Math.random() * lista.length)];
-  return aleatoria;
-};
+  const response = await fetch(archivosPorDificultad[dificultad]);
+  const data = await response.json();
+
+  // Elegimos una palabra aleatoria de la lista
+  const palabraAleatoria = data[Math.floor(Math.random() * data.length)];
+
+  return {
+    palabra: palabraAleatoria.palabra,
+    definicion: palabraAleatoria.definicion,
+  };
+}

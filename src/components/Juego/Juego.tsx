@@ -4,6 +4,10 @@ import Grid from './Grid';
 import Teclado from './Teclado';
 import confetti from 'canvas-confetti';
 
+type JuegoProps = {
+  dificultad: 'facil' | 'normal' | 'dificil';
+};
+
 type EstadoLetra = 'correcta' | 'casi' | 'incorrecta' | 'pendiente';
 
 interface LetraIntento {
@@ -11,25 +15,40 @@ interface LetraIntento {
   estado: EstadoLetra;
 }
 
-const MAX_INTENTOS = 6;
+const maxIntentosPorDificultad = {
+  facil: 6,
+  normal: 5,
+  dificil: 7
+};
 
+// Función para quitar tildes
+function quitarTildes(str: string): string {
+  return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+}
+
+// Validación con comparación sin tildes
 function validarIntento(palabra: string, intento: string[]): LetraIntento[] {
   const resultado: LetraIntento[] = [];
-  const letrasObjetivo = palabra.split('');
+
+  const palabraSinTildes = quitarTildes(palabra).toUpperCase();
+  const intentoSinTildes = intento.map((letra) => quitarTildes(letra).toUpperCase());
+
+  const letrasObjetivo = palabraSinTildes.split('');
   const letrasEvaluadas = [...letrasObjetivo];
 
-  intento.forEach((letra, i) => {
+  intentoSinTildes.forEach((letra, i) => {
     if (letra === letrasObjetivo[i]) {
-      resultado[i] = { letra, estado: 'correcta' };
+      resultado[i] = { letra: intento[i], estado: 'correcta' };
       letrasEvaluadas[i] = '';
     } else {
-      resultado[i] = { letra, estado: 'pendiente' };
+      resultado[i] = { letra: intento[i], estado: 'pendiente' };
     }
   });
 
-  resultado.forEach((item) => {
+  resultado.forEach((item, ) => {
+    const letraSinTilde = quitarTildes(item.letra).toUpperCase();
     if (item.estado === 'pendiente') {
-      const index = letrasEvaluadas.indexOf(item.letra);
+      const index = letrasEvaluadas.indexOf(letraSinTilde);
       if (index !== -1) {
         item.estado = 'casi';
         letrasEvaluadas[index] = '';
@@ -42,7 +61,10 @@ function validarIntento(palabra: string, intento: string[]): LetraIntento[] {
   return resultado;
 }
 
-const Juego: React.FC = () => {
+const Juego: React.FC<JuegoProps> = ({ dificultad }) => {
+  
+  const MAX_INTENTOS = maxIntentosPorDificultad[dificultad];
+
   const [palabraDelDia, setPalabraDelDia] = useState<string>('');
   const [definicion, setDefinicion] = useState<string | null>(null);
   const [intentos, setIntentos] = useState<LetraIntento[][]>([]);
@@ -78,14 +100,14 @@ const Juego: React.FC = () => {
 
     setFilaActual((prev) => prev + 1);
     setIntentoActual([]);
-  }, [palabraDelDia, intentoActual, intentos, teclasEstado]);
+  }, [palabraDelDia, intentoActual, intentos, teclasEstado, MAX_INTENTOS]);
 
   useEffect(() => {
-    fetchPalabraDelDia().then((data) => {
+    fetchPalabraDelDia(dificultad).then((data) => {
       setPalabraDelDia(data.palabra.toUpperCase());
       setDefinicion(data.definicion ?? null);
     });
-  }, []);
+  }, [dificultad]);
 
   useEffect(() => {
     const manejarTecla = (e: KeyboardEvent) => {
@@ -117,7 +139,7 @@ const Juego: React.FC = () => {
       });
     }
   }, [estadoJuego]);
-  
+
   const reiniciarJuego = () => {
     setIntentos([]);
     setIntentoActual([]);
@@ -125,7 +147,7 @@ const Juego: React.FC = () => {
     setEstadoJuego('jugando');
     setTeclasEstado({});
 
-    fetchPalabraDelDia().then((data) => {
+    fetchPalabraDelDia(dificultad).then((data) => {
       setPalabraDelDia(data.palabra.toUpperCase());
       setDefinicion(data.definicion ?? null);
     });
@@ -145,7 +167,7 @@ const Juego: React.FC = () => {
         }
       >
         {estadoJuego === 'jugando' ? (
-          '¡Intenta adivinar!'
+          '¡Intenta adivinarla!'
         ) : estadoJuego === 'ganado' ? (
           <>
             🎉 ¡Muy bien, has ganado! Efectivamente es{' '}
@@ -173,11 +195,13 @@ const Juego: React.FC = () => {
       )}
 
       <Grid
-        intentos={intentos}
-        intentoActual={intentoActual}
-        filaActual={filaActual}
-        longitudPalabra={palabraDelDia.length}
+      intentos={intentos}
+      intentoActual={intentoActual}
+      filaActual={filaActual}
+      longitudPalabra={palabraDelDia.length}
+      maxIntentos={MAX_INTENTOS}
       />
+
 
       <Teclado
         onTecla={(letra) => {

@@ -12,9 +12,11 @@ interface Props {
   intentoActual: string[];
   filaActual: number;
   longitudPalabra: number;
+  maxIntentos: number;
 }
 
-const Grid: React.FC<Props> = ({ intentos, intentoActual, filaActual, longitudPalabra }) => {
+const Grid: React.FC<Props> = ({ intentos, intentoActual, filaActual, longitudPalabra, maxIntentos }) => {
+
   const renderIntentoActual = (): LetraIntento[] => {
     return Array.from({ length: longitudPalabra }, (_, i) => ({
       letra: intentoActual[i] || '',
@@ -25,7 +27,7 @@ const Grid: React.FC<Props> = ({ intentos, intentoActual, filaActual, longitudPa
   const renderFilas = () => {
     const filas: LetraIntento[][] = [];
 
-    for (let i = 0; i < 6; i++) {
+ for (let i = 0; i < maxIntentos; i++) {
       if (i < intentos.length) {
         filas.push(intentos[i]);
       } else if (i === filaActual) {
