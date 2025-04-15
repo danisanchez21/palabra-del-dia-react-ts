@@ -6,23 +6,18 @@ import Juego from './components/Juego/Juego';
 function App() {
   const [fase, setFase] = useState<'inicio' | 'selector' | 'juego'>('inicio');
   const [dificultad, setDificultad] = useState<'facil' | 'normal' | 'dificil' | null>(null);
-  const [modoOscuro, setModoOscuro] = useState(false);
+  const [modoClaro, setModoClaro] = useState(false); // oscuro por defecto
 
   // Cargar preferencia del usuario desde localStorage
   useEffect(() => {
-    const modoGuardado = localStorage.getItem("modoOscuro");
-    setModoOscuro(modoGuardado === "true");
+    const guardado = localStorage.getItem("modoClaro");
+    setModoClaro(guardado === "true");
   }, []);
 
-  // Aplicar clase dark al <html> según el estado
+  // Guardar en localStorage cuando se cambia
   useEffect(() => {
-    if (modoOscuro) {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-    localStorage.setItem("modoOscuro", String(modoOscuro));
-  }, [modoOscuro]);
+    localStorage.setItem("modoClaro", String(modoClaro));
+  }, [modoClaro]);
 
   const iniciarSeleccionDificultad = () => setFase('selector');
 
@@ -31,20 +26,46 @@ function App() {
     setFase('juego');
   };
 
+  const estilosApp = modoClaro
+    ? 'bg-white text-black'
+    : 'bg-black text-white';
+
+  const estilosBoton = modoClaro
+    ? 'bg-gray-200 text-black hover:bg-gray-300'
+    : 'bg-gray-700 text-white hover:bg-gray-600';
+
   return (
-    <div className="App min-h-screen bg-white text-black dark:bg-gray-900 dark:text-white transition-colors duration-300 relative">
+    <div className={`App min-h-screen transition-colors duration-300 relative ${estilosApp}`}>
       {/* Botón para alternar modo claro/oscuro */}
       <button
-        onClick={() => setModoOscuro(!modoOscuro)}
-        className="absolute top-4 right-4 p-2 rounded bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition"
+        onClick={() => setModoClaro(!modoClaro)}
+        className={`absolute top-4 right-4 p-2 rounded transition ${estilosBoton}`}
         aria-label="Cambiar modo"
       >
-        {modoOscuro ? '☀️' : '🌙'}
+        {modoClaro ? '🌙' : '☀️'}
       </button>
 
-      {fase === 'inicio' && <PantallaInicio onJugar={iniciarSeleccionDificultad} />}
-      {fase === 'selector' && <SelectorDificultad onSeleccionarDificultad={iniciarJuego} />}
-      {fase === 'juego' && dificultad && <Juego dificultad={dificultad} />}
+      {fase === 'inicio' && (
+        <PantallaInicio
+          onJugar={iniciarSeleccionDificultad}
+          modoClaro={modoClaro}
+        />
+      )}
+
+      {fase === 'selector' && (
+        <SelectorDificultad
+          onSeleccionarDificultad={iniciarJuego}
+          modoClaro={modoClaro}
+        />
+      )}
+
+      {fase === 'juego' && dificultad && (
+        <Juego
+          dificultad={dificultad}
+          modoClaro={modoClaro}
+        />
+      )}
+
     </div>
   );
 }

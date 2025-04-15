@@ -9,13 +9,15 @@ interface LetraIntento {
 
 interface Props {
   letras: LetraIntento[];
+  modoClaro: boolean;
 }
 
-const Fila: React.FC<Props> = ({ letras }) => {
+const Fila: React.FC<Props> = ({ letras, modoClaro }) => {
+
   return (
     <div className="flex justify-center">
       {letras.map((l, i) => (
-        <LetraCelda key={i} letra={l.letra} estado={l.estado} />
+        <LetraCelda modoClaro={modoClaro} key={i} letra={l.letra} estado={l.estado} />
       ))}
     </div>
   );

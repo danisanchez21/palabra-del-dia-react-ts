@@ -8,6 +8,7 @@ interface LetraIntento {
 }
 
 interface Props {
+  modoClaro: boolean;
   intentos: LetraIntento[][];
   intentoActual: string[];
   filaActual: number;
@@ -15,7 +16,7 @@ interface Props {
   maxIntentos: number;
 }
 
-const Grid: React.FC<Props> = ({ intentos, intentoActual, filaActual, longitudPalabra, maxIntentos }) => {
+const Grid: React.FC<Props> = ({ intentos, intentoActual, filaActual, longitudPalabra, maxIntentos, modoClaro }) => {
 
   const renderIntentoActual = (): LetraIntento[] => {
     return Array.from({ length: longitudPalabra }, (_, i) => ({
@@ -43,7 +44,7 @@ const Grid: React.FC<Props> = ({ intentos, intentoActual, filaActual, longitudPa
   return (
     <div className="flex flex-col items-center gap-[0.2rem] mt-8">
       {renderFilas().map((fila, i) => (
-        <Fila key={i} letras={fila} />
+        <Fila key={i} letras={fila} modoClaro={modoClaro} />
       ))}
     </div>
   );

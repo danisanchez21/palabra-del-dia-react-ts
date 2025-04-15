@@ -1,6 +1,7 @@
 type EstadoLetra = 'correcta' | 'casi' | 'incorrecta' | 'pendiente';
 
 interface Props {
+  modoClaro: boolean;
   valor: string;
   onClick: () => void;
   estado?: EstadoLetra;

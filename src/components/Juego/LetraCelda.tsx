@@ -3,15 +3,21 @@ type EstadoLetra = 'correcta' | 'casi' | 'incorrecta' | 'pendiente';
 interface Props {
   letra: string;
   estado?: EstadoLetra;
+  modoClaro: boolean;
   animada?: boolean;
 }
 
-const LetraCelda: React.FC<Props> = ({ letra, estado = 'pendiente', animada = false }) => {
+const LetraCelda: React.FC<Props> = ({ letra, estado = 'pendiente', animada = false, modoClaro }) => {
+  const colorTexto = estado !== 'pendiente'
+  ? 'text-white'
+  : modoClaro ? 'text-black' : 'text-white';
+
+
   const estadoStyles = {
-    pendiente: "bg-transparent text-white",
-    correcta: "bg-[#00A63E] text-white",
-    casi: "bg-[#DAA520] text-white",
-    incorrecta: "bg-[#364153] text-white",
+    pendiente: "bg-transparent ",
+    correcta: "bg-[#00A63E] ",
+    casi: "bg-[#DAA520] ",
+    incorrecta: "bg-[#364153] ",
   };
 
   return (
@@ -22,7 +28,7 @@ const LetraCelda: React.FC<Props> = ({ letra, estado = 'pendiente', animada = fa
         font-bold text-xl uppercase
         m-[0.1rem]
         transition-colors duration-300
-        ${estadoStyles[estado]}
+        ${estadoStyles[estado]} ${colorTexto}
         ${animada ? 'animate-bounce' : ''}
       `}
     >

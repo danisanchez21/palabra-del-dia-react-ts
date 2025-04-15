@@ -5,7 +5,8 @@ interface Props {
   onBorrar: () => void;
   onEnter: () => void;
   estados: Record<string, 'correcta' | 'casi' | 'incorrecta' | 'pendiente' | undefined>;
-}
+  modoClaro: boolean;
+  }
 
 const filas = [
   ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P'],
@@ -13,13 +14,13 @@ const filas = [
   ['✔', 'Z', 'X', 'C', 'V', 'B', 'N', 'M', '⌫']
 ];
 
-const Teclado: React.FC<Props> = ({ onTecla, onBorrar, onEnter, estados }) => {
+const Teclado: React.FC<Props> = ({ onTecla, onBorrar, onEnter, estados, modoClaro }) => {
   return (
     <div className="flex flex-col items-center mt-7 gap-2">
       {filas.map((fila, i) => (
         <div key={i} className="flex justify-center gap-1">
           {fila.map((tecla) => (
-            <BotonTecla
+            <BotonTecla modoClaro={modoClaro}
               key={tecla}
               valor={tecla}
               onClick={() => {
