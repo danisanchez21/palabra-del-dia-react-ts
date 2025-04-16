@@ -19,6 +19,12 @@ function App() {
     localStorage.setItem("modoClaro", String(modoClaro));
   }, [modoClaro]);
 
+useEffect(() => {
+  document.body.classList.toggle('modo-claro', modoClaro);
+  document.body.classList.toggle('modo-oscuro', !modoClaro);
+}, [modoClaro]);
+
+
   const iniciarSeleccionDificultad = () => setFase('selector');
 
   const iniciarJuego = (nivel: 'facil' | 'normal' | 'dificil') => {
@@ -27,8 +33,8 @@ function App() {
   };
 
   const estilosApp = modoClaro
-    ? 'bg-white text-black'
-    : 'bg-black text-white';
+    ? 'bg-[#f5f5dc] text-black'
+    : 'bg-[#121213] text-white';
 
   const estilosBoton = modoClaro
     ? 'bg-gray-200 text-black hover:bg-gray-300'

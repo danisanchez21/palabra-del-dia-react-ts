@@ -6,7 +6,7 @@ interface Props {
 }
 
 const PantallaInicio: React.FC<Props> = ({ onJugar, modoClaro }) => {
-  const fondo = modoClaro ? 'bg-white text-black' : 'bg-[#121213] text-white';
+  const fondo = modoClaro ? 'bg-#f5f5dc text-black' : 'bg-[#121213] text-white';
   const verde = modoClaro ? 'text-green-600' : 'text-[#538d4e]';
   const amarillo = modoClaro ? 'text-yellow-600' : 'text-[#b59f3b]';
   const gris = modoClaro ? 'text-gray-500' : 'text-[#787c7e]';

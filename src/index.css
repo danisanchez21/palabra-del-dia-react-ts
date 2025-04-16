@@ -7,14 +7,31 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
+  /* background-color: #242424; */
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  -moz-osx-font-smoothing: grayscale;  background-size: cover;
+
 }
 
+body.modo-claro {
+  background-image: url('../public/fondo-claro.png');
+  background-size: cover;            /* Escala la imagen para cubrir todo el fondo */
+  background-position: center;       /* Centra la imagen */
+  background-repeat: no-repeat;      /* Evita que se repita */
+  min-height: 100vh;                 /* Asegura que el body ocupe toda la altura de la ventana */
+  margin: 0;                         /* Quita márgenes por defecto */
+}
+
+body.modo-oscuro {
+  background-image: url('../public/fondo-oscuro.png');
+  background-size: cover;            /* Escala la imagen para cubrir todo el fondo */
+  background-position: center;       /* Centra la imagen */
+  background-repeat: no-repeat;      /* Evita que se repita */
+  min-height: 100vh;                 /* Asegura que el body ocupe toda la altura de la ventana */
+  margin: 0;                         /* Quita márgenes por defecto */
+}
 
 body {
   margin: 0;
