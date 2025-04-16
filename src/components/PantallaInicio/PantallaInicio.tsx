@@ -14,26 +14,26 @@ const PantallaInicio: React.FC<Props> = ({ onJugar, modoClaro }) => {
   return (
     <div className={`min-h-screen text-center p-8 transition-colors duration-300 ${fondo}`}>
       <h1 className="text-4xl mb-8 flex flex-wrap justify-center gap-1">
-        {/* Letras (puedes personalizar más colores si quieres) */}
-        <span className="bg-[#3a3a3c] w-10 h-10 flex items-center justify-center font-bold text-lg rounded">L</span>
-        <span className="bg-[#3a3a3c] w-10 h-10 flex items-center justify-center font-bold text-lg rounded">A</span>
+        <span className="bg-[#3a3a3c] text-white w-10 h-10 flex items-center justify-center font-bold text-lg rounded">L</span>
+        <span className="bg-[#3a3a3c] text-white w-10 h-10 flex items-center justify-center font-bold text-lg rounded">A</span>
         &nbsp;
-        <span className="bg-[#538d4e] w-10 h-10 flex items-center justify-center font-bold text-lg rounded">P</span>
-        <span className="bg-[#538d4e] w-10 h-10 flex items-center justify-center font-bold text-lg rounded">A</span>
-        <span className="bg-[#538d4e] w-10 h-10 flex items-center justify-center font-bold text-lg rounded">L</span>
-        <span className="bg-[#538d4e] w-10 h-10 flex items-center justify-center font-bold text-lg rounded">A</span>
-        <span className="bg-[#538d4e] w-10 h-10 flex items-center justify-center font-bold text-lg rounded">B</span>
-        <span className="bg-[#538d4e] w-10 h-10 flex items-center justify-center font-bold text-lg rounded">R</span>
-        <span className="bg-[#538d4e] w-10 h-10 flex items-center justify-center font-bold text-lg rounded">A</span>
+        <span className="bg-[#538d4e] text-white w-10 h-10 flex items-center justify-center font-bold text-lg rounded">P</span>
+        <span className="bg-[#538d4e] text-white w-10 h-10 flex items-center justify-center font-bold text-lg rounded">A</span>
+        <span className="bg-[#538d4e] text-white w-10 h-10 flex items-center justify-center font-bold text-lg rounded">L</span>
+        <span className="bg-[#538d4e] text-white w-10 h-10 flex items-center justify-center font-bold text-lg rounded">A</span>
+        <span className="bg-[#538d4e] text-white w-10 h-10 flex items-center justify-center font-bold text-lg rounded">B</span>
+        <span className="bg-[#538d4e] text-white w-10 h-10 flex items-center justify-center font-bold text-lg rounded">R</span>
+        <span className="bg-[#538d4e] text-white w-10 h-10 flex items-center justify-center font-bold text-lg rounded">A</span>
         &nbsp;
-        <span className="bg-[#3a3a3c] w-10 h-10 flex items-center justify-center font-bold text-lg rounded">D</span>
-        <span className="bg-[#3a3a3c] w-10 h-10 flex items-center justify-center font-bold text-lg rounded">E</span>
-        <span className="bg-[#3a3a3c] w-10 h-10 flex items-center justify-center font-bold text-lg rounded">L</span>
+        <span className="bg-[#3a3a3c] text-white w-10 h-10 flex items-center justify-center font-bold text-lg rounded">D</span>
+        <span className="bg-[#3a3a3c] text-white w-10 h-10 flex items-center justify-center font-bold text-lg rounded">E</span>
+        <span className="bg-[#3a3a3c] text-white w-10 h-10 flex items-center justify-center font-bold text-lg rounded">L</span>
         &nbsp;
-        <span className="bg-[#b59f3b] w-10 h-10 flex items-center justify-center font-bold text-lg rounded">D</span>
-        <span className="bg-[#b59f3b] w-10 h-10 flex items-center justify-center font-bold text-lg rounded">Í</span>
-        <span className="bg-[#b59f3b] w-10 h-10 flex items-center justify-center font-bold text-lg rounded">A</span>
+        <span className="bg-[#b59f3b] text-white w-10 h-10 flex items-center justify-center font-bold text-lg rounded">D</span>
+        <span className="bg-[#b59f3b] text-white w-10 h-10 flex items-center justify-center font-bold text-lg rounded">Í</span>
+        <span className="bg-[#b59f3b] text-white w-10 h-10 flex items-center justify-center font-bold text-lg rounded">A</span>
       </h1>
+
 
       <div className="text-left max-w-xl mx-auto mb-8 space-y-4 leading-5.5">
         <p>¿Listo para el reto? Tienes 6 intentos para descubrir la palabra secreta.</p>
