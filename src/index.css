@@ -1,5 +1,10 @@
 @import "tailwindcss";
 
+/* Asegura que paddings y borders no desborden los elementos */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -7,15 +12,36 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
+  /* background-color: #242424; */
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  background-size: cover;
 }
 
+/* Fondo claro */
+body.modo-claro {
+  background-image: url('../public/fondo-claro.png');
+  background-size: cover;            /* Escala la imagen para cubrir todo el fondo */
+  background-position: center;       /* Centra la imagen */
+  background-repeat: no-repeat;      /* Evita que se repita */
+  min-height: 100vh;                 /* Asegura que el body ocupe toda la altura de la ventana */
+  margin: 0;                         /* Quita márgenes por defecto */
+}
 
+/* Fondo oscuro */
+body.modo-oscuro {
+  background-image: url('../public/fondo-oscuro.png');
+  background-size: cover;            /* Escala la imagen para cubrir todo el fondo */
+  background-position: center;       /* Centra la imagen */
+  background-repeat: no-repeat;      /* Evita que se repita */
+  min-height: 100vh;                 /* Asegura que el body ocupe toda la altura de la ventana */
+  margin: 0;                         /* Quita márgenes por defecto */
+}
+
+/* Ajustes generales del body */
 body {
   margin: 0;
   /* display: flex; */
@@ -24,8 +50,14 @@ body {
   min-height: 100vh;
 }
 
+/* Focus en botones (se elimina para evitar deformaciones en teclas) */
 button:focus,
 button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  outline: none;
+}
 
+/* Asegura que el layout ocupe toda la altura y no se desborde horizontalmente */
+html, body, #root {
+  height: 100%;
+  overflow-x: hidden;
 }

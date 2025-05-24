@@ -1,12 +1,14 @@
 type EstadoLetra = 'correcta' | 'casi' | 'incorrecta' | 'pendiente';
 
 interface Props {
+  modoClaro: boolean;
   valor: string;
   onClick: () => void;
   estado?: EstadoLetra;
+  className?: string;
 }
 
-const BotonTecla: React.FC<Props> = ({ valor, onClick, estado }) => {
+const BotonTecla: React.FC<Props> = ({ valor, onClick, estado, className }) => {
   const estadoStyles = {
     correcta: "bg-green-600",
     casi: "bg-yellow-600",
@@ -15,19 +17,23 @@ const BotonTecla: React.FC<Props> = ({ valor, onClick, estado }) => {
   };
 
   return (
-      <button
-        className={`
-          ${estado ? estadoStyles[estado] : 'bg-[#666]'}
-          border-none text-white text-base font-bold uppercase
-          px-3 py-2 rounded m-[0.2rem] min-w-[2.5rem] cursor-pointer
-          transition-colors duration-200
-        `}
-        onClick={onClick}
-      >
-        {valor}
-      </button>
-    );
-  };
-  
-  export default BotonTecla;
-  
+    <button
+      className={`
+        ${estado ? estadoStyles[estado] : 'bg-[#666]'}
+        aspect-square
+        text-white font-bold uppercase
+        text-[clamp(0.75rem,2.5vw,1.25rem)]
+        rounded
+        transition-colors duration-200
+        flex items-center justify-center
+        select-none
+        ${className ?? ''}
+      `}
+      onClick={onClick}
+    >
+      {valor}
+    </button>
+  );
+};
+
+export default BotonTecla;

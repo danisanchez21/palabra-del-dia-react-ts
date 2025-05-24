@@ -2,13 +2,17 @@ import React from "react";
 
 type SelectorDificultadProps = {
     onSeleccionarDificultad: (dificultad: "facil" | "normal" | "dificil") => void;
+    modoClaro: boolean; // ✅ AÑADIDO
 };
 
 const SelectorDificultad: React.FC<SelectorDificultadProps> = ({
     onSeleccionarDificultad,
+    modoClaro,
 }) => {
+    const colorTexto = modoClaro ? "text-black" : "text-white";
+
     return (
-        <div className="text-center p-8 text-white">
+        <div className={`text-center p-8 transition-colors duration-300 ${colorTexto}`}>
             <h2 className="text-2xl font-bold">Selecciona una dificultad</h2>
             <div className="flex justify-center gap-4 mt-4">
                 <button
@@ -30,19 +34,30 @@ const SelectorDificultad: React.FC<SelectorDificultadProps> = ({
                     Difícil
                 </button>
             </div>
+
             <div className="text-left max-w-xl mx-auto mb-8 mt-12 space-y-4 leading-5.5">
                 <p>Cada dificultad presenta una serie de diferencias entre ellas:</p>
 
-
                 <ul className="space-y-1 leading-7">
-                    <li><span className="text-green-600 font-bold">FÁCIL</span>: Tendrás <strong>6 intentos</strong> para adivinar una palabra de <strong>5 letras</strong>.</li>
-                    <li><span className="text-yellow-500 font-bold">NORMAL</span>: Tendrás <strong>5 intentos</strong> para adivinar una palabra de <strong>7 letras</strong>.</li>
-                    <li><span className="text-red-600 font-bold">DIFÍCIL</span>: Tendrás <strong>7 intentos</strong> para adivinar una palabra de <strong>9 letras</strong>.</li>
+                    <li>
+                        <span className="text-green-600 font-bold">FÁCIL</span>: Tendrás{" "}
+                        <strong>6 intentos</strong> para adivinar una palabra de{" "}
+                        <strong>5 letras</strong>.
+                    </li>
+                    <li>
+                        <span className="text-yellow-500 font-bold">NORMAL</span>: Tendrás{" "}
+                        <strong>5 intentos</strong> para adivinar una palabra de{" "}
+                        <strong>7 letras</strong>.
+                    </li>
+                    <li>
+                        <span className="text-red-600 font-bold">DIFÍCIL</span>: Tendrás{" "}
+                        <strong>7 intentos</strong> para adivinar una palabra de{" "}
+                        <strong>9 letras</strong>.
+                    </li>
                 </ul>
 
-                <p>¿Que me dices? ¿Te atreves con las dificultades más altas? 😎💯</p>
+                <p>¿Qué me dices? ¿Te atreves con las dificultades más altas? 😎💯</p>
             </div>
-
         </div>
     );
 };

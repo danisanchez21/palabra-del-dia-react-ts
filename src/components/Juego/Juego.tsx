@@ -5,6 +5,7 @@ import Teclado from './Teclado';
 import confetti from 'canvas-confetti';
 
 type JuegoProps = {
+  modoClaro: boolean;
   dificultad: 'facil' | 'normal' | 'dificil';
 };
 
@@ -18,18 +19,15 @@ interface LetraIntento {
 const maxIntentosPorDificultad = {
   facil: 6,
   normal: 5,
-  dificil: 7
+  dificil: 7,
 };
 
-// Función para quitar tildes
 function quitarTildes(str: string): string {
   return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
 }
 
-// Validación con comparación sin tildes
 function validarIntento(palabra: string, intento: string[]): LetraIntento[] {
   const resultado: LetraIntento[] = [];
-
   const palabraSinTildes = quitarTildes(palabra).toUpperCase();
   const intentoSinTildes = intento.map((letra) => quitarTildes(letra).toUpperCase());
 
@@ -45,7 +43,7 @@ function validarIntento(palabra: string, intento: string[]): LetraIntento[] {
     }
   });
 
-  resultado.forEach((item, ) => {
+  resultado.forEach((item) => {
     const letraSinTilde = quitarTildes(item.letra).toUpperCase();
     if (item.estado === 'pendiente') {
       const index = letrasEvaluadas.indexOf(letraSinTilde);
@@ -61,8 +59,7 @@ function validarIntento(palabra: string, intento: string[]): LetraIntento[] {
   return resultado;
 }
 
-const Juego: React.FC<JuegoProps> = ({ dificultad }) => {
-  
+const Juego: React.FC<JuegoProps> = ({ dificultad, modoClaro }) => {
   const MAX_INTENTOS = maxIntentosPorDificultad[dificultad];
 
   const [palabraDelDia, setPalabraDelDia] = useState<string>('');
@@ -81,7 +78,7 @@ const Juego: React.FC<JuegoProps> = ({ dificultad }) => {
     const nuevosEstados = { ...teclasEstado };
     resultado.forEach(({ letra, estado }) => {
       const estadoActual = nuevosEstados[letra];
-      const prioridad = { 'correcta': 3, 'casi': 2, 'incorrecta': 1, 'pendiente': 0 };
+      const prioridad = { correcta: 3, casi: 2, incorrecta: 1, pendiente: 0 };
       if (!estadoActual || prioridad[estado] > prioridad[estadoActual]) {
         nuevosEstados[letra] = estado;
       }
@@ -154,8 +151,8 @@ const Juego: React.FC<JuegoProps> = ({ dificultad }) => {
   };
 
   return (
-    <div className="text-white max-w-xl mx-auto text-center space-y-4 px-4">
-      <h2 className="text-2xl font-bold">La Palabra del Día</h2>
+    <div className={`${modoClaro ? "text-black" : "text-white"} max-w-xl mx-auto text-center space-y-4 px-4`}>
+      <h2 className="text-2xl font-bold py-6">La Palabra del Día</h2>
 
       <p
         className={
@@ -163,6 +160,8 @@ const Juego: React.FC<JuegoProps> = ({ dificultad }) => {
             ? "bg-green-100 text-green-700 border border-green-400 rounded p-4 text-lg font-medium"
             : estadoJuego === 'perdido'
             ? "bg-red-100 text-red-700 border border-red-400 rounded p-4 text-lg font-medium"
+            : modoClaro
+            ? "text-black text-lg"
             : "text-white text-lg"
         }
       >
@@ -195,13 +194,13 @@ const Juego: React.FC<JuegoProps> = ({ dificultad }) => {
       )}
 
       <Grid
-      intentos={intentos}
-      intentoActual={intentoActual}
-      filaActual={filaActual}
-      longitudPalabra={palabraDelDia.length}
-      maxIntentos={MAX_INTENTOS}
+        intentos={intentos}
+        intentoActual={intentoActual}
+        filaActual={filaActual}
+        longitudPalabra={palabraDelDia.length}
+        maxIntentos={MAX_INTENTOS}
+        modoClaro={modoClaro}
       />
-
 
       <Teclado
         onTecla={(letra) => {
@@ -223,6 +222,7 @@ const Juego: React.FC<JuegoProps> = ({ dificultad }) => {
           procesarIntento();
         }}
         estados={teclasEstado}
+        modoClaro={modoClaro}
       />
     </div>
   );
