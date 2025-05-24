@@ -152,7 +152,7 @@ const Juego: React.FC<JuegoProps> = ({ dificultad, modoClaro }) => {
 
   return (
     <div className={`${modoClaro ? "text-black" : "text-white"} max-w-xl mx-auto text-center space-y-4 px-4`}>
-      <h2 className="text-2xl font-bold">La Palabra del Día</h2>
+      <h2 className="text-2xl font-bold py-6">La Palabra del Día</h2>
 
       <p
         className={

@@ -23,9 +23,9 @@ const LetraCelda: React.FC<Props> = ({ letra, estado = 'pendiente', animada = fa
   return (
     <div
       className={`
-        w-12 h-12 border-2 border-[#555]
+        w-[8vw] h-[8vw] sm:w-12 sm:h-12 border-2 border-[#555]
         flex items-center justify-center
-        font-bold text-xl uppercase
+        font-bold text-[5vw] sm:text-xl uppercase
         m-[0.1rem]
         transition-colors duration-300
         ${estadoStyles[estado]} ${colorTexto}

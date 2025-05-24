@@ -6,33 +6,45 @@ interface Props {
   onEnter: () => void;
   estados: Record<string, 'correcta' | 'casi' | 'incorrecta' | 'pendiente' | undefined>;
   modoClaro: boolean;
-  }
-
-const filas = [
-  ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P'],
-  ['A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'Ñ'],
-  ['✔', 'Z', 'X', 'C', 'V', 'B', 'N', 'M', '⌫']
-];
+}
 
 const Teclado: React.FC<Props> = ({ onTecla, onBorrar, onEnter, estados, modoClaro }) => {
+  const renderTecla = (valor: string, className = '') => (
+    <BotonTecla
+      modoClaro={modoClaro}
+      key={valor}
+      valor={valor}
+      onClick={() => {
+        if (valor === '⌫') onBorrar();
+        else if (valor === '✔') onEnter();
+        else onTecla(valor);
+      }}
+      estado={estados[valor]}
+      className={className}
+    />
+  );
+
   return (
-    <div className="flex flex-col items-center mt-7 gap-2">
-      {filas.map((fila, i) => (
-        <div key={i} className="flex justify-center gap-1">
-          {fila.map((tecla) => (
-            <BotonTecla modoClaro={modoClaro}
-              key={tecla}
-              valor={tecla}
-              onClick={() => {
-                if (tecla === '⌫') onBorrar();
-                else if (tecla === '✔') onEnter();
-                else onTecla(tecla);
-              }}
-              estado={estados[tecla]}
-            />
-          ))}
+    <div className="w-full flex justify-center">
+      <div style={{ width: '600px' }} className="scale-[min(1,calc(100vw/600))] origin-top space-y-2">
+        
+        {/* Fila 1 */}
+        <div className="grid grid-cols-10 gap-1">
+          {'QWERTYUIOP'.split('').map((letra) => renderTecla(letra))}
         </div>
-      ))}
+
+        {/* Fila 2 */}
+        <div className="grid grid-cols-10 gap-1">
+          {'ASDFGHJKLÑ'.split('').map((letra) => renderTecla(letra))}
+        </div>
+
+        {/* Fila 3 centrada con ancho proporcional */}
+        <div className="flex justify-center gap-1">
+          {['✔', 'Z', 'X', 'C', 'V', 'B', 'N', 'M', '⌫'].map((letra) =>
+            renderTecla(letra, 'w-[9.50%]')
+          )}
+        </div>
+      </div>
     </div>
   );
 };

@@ -12,26 +12,26 @@ const PantallaInicio: React.FC<Props> = ({ onJugar, modoClaro }) => {
   const gris = modoClaro ? 'text-gray-500' : 'text-[#787c7e]';
 
   return (
-    <div className={`min-h-screen text-center p-8 transition-colors duration-300 ${fondo}`}>
+<div className={`min-h-screen flex flex-col items-center text-center p-4 mt-3 sm:p-8 transition-colors duration-300 ${fondo}`}>
       <h1 className="text-4xl mb-8 flex flex-wrap justify-center gap-1">
-        <span className="bg-[#3a3a3c] text-white w-10 h-10 flex items-center justify-center font-bold text-lg rounded">L</span>
-        <span className="bg-[#3a3a3c] text-white w-10 h-10 flex items-center justify-center font-bold text-lg rounded">A</span>
+        <span className="bg-[#3a3a3c] text-white w-[8vw] h-[8vw] sm:w-10 sm:h-10 flex items-center justify-center font-bold text-[5vw] sm:text-lg rounded">L</span>
+        <span className="bg-[#3a3a3c] text-white w-[8vw] h-[8vw] sm:w-10 sm:h-10 flex items-center justify-center font-bold text-[5vw] sm:text-lg rounded">A</span>
         &nbsp;
-        <span className="bg-[#538d4e] text-white w-10 h-10 flex items-center justify-center font-bold text-lg rounded">P</span>
-        <span className="bg-[#538d4e] text-white w-10 h-10 flex items-center justify-center font-bold text-lg rounded">A</span>
-        <span className="bg-[#538d4e] text-white w-10 h-10 flex items-center justify-center font-bold text-lg rounded">L</span>
-        <span className="bg-[#538d4e] text-white w-10 h-10 flex items-center justify-center font-bold text-lg rounded">A</span>
-        <span className="bg-[#538d4e] text-white w-10 h-10 flex items-center justify-center font-bold text-lg rounded">B</span>
-        <span className="bg-[#538d4e] text-white w-10 h-10 flex items-center justify-center font-bold text-lg rounded">R</span>
-        <span className="bg-[#538d4e] text-white w-10 h-10 flex items-center justify-center font-bold text-lg rounded">A</span>
+        <span className="bg-[#538d4e] text-white w-[8vw] h-[8vw] sm:w-10 sm:h-10 flex items-center justify-center font-bold text-[5vw] sm:text-lg rounded">P</span>
+        <span className="bg-[#538d4e] text-white w-[8vw] h-[8vw] sm:w-10 sm:h-10 flex items-center justify-center font-bold text-[5vw] sm:text-lg rounded">A</span>
+        <span className="bg-[#538d4e] text-white w-[8vw] h-[8vw] sm:w-10 sm:h-10 flex items-center justify-center font-bold text-[5vw] sm:text-lg rounded">L</span>
+        <span className="bg-[#538d4e] text-white w-[8vw] h-[8vw] sm:w-10 sm:h-10 flex items-center justify-center font-bold text-[5vw] sm:text-lg rounded">A</span>
+        <span className="bg-[#538d4e] text-white w-[8vw] h-[8vw] sm:w-10 sm:h-10 flex items-center justify-center font-bold text-[5vw] sm:text-lg rounded">B</span>
+        <span className="bg-[#538d4e] text-white w-[8vw] h-[8vw] sm:w-10 sm:h-10 flex items-center justify-center font-bold text-[5vw] sm:text-lg rounded">R</span>
+        <span className="bg-[#538d4e] text-white w-[8vw] h-[8vw] sm:w-10 sm:h-10 flex items-center justify-center font-bold text-[5vw] sm:text-lg rounded">A</span>
         &nbsp;
-        <span className="bg-[#3a3a3c] text-white w-10 h-10 flex items-center justify-center font-bold text-lg rounded">D</span>
-        <span className="bg-[#3a3a3c] text-white w-10 h-10 flex items-center justify-center font-bold text-lg rounded">E</span>
-        <span className="bg-[#3a3a3c] text-white w-10 h-10 flex items-center justify-center font-bold text-lg rounded">L</span>
+        <span className="bg-[#3a3a3c] text-white w-[8vw] h-[8vw] sm:w-10 sm:h-10 flex items-center justify-center font-bold text-[5vw] sm:text-lg rounded">D</span>
+        <span className="bg-[#3a3a3c] text-white w-[8vw] h-[8vw] sm:w-10 sm:h-10 flex items-center justify-center font-bold text-[5vw] sm:text-lg rounded">E</span>
+        <span className="bg-[#3a3a3c] text-white w-[8vw] h-[8vw] sm:w-10 sm:h-10 flex items-center justify-center font-bold text-[5vw] sm:text-lg rounded">L</span>
         &nbsp;
-        <span className="bg-[#b59f3b] text-white w-10 h-10 flex items-center justify-center font-bold text-lg rounded">D</span>
-        <span className="bg-[#b59f3b] text-white w-10 h-10 flex items-center justify-center font-bold text-lg rounded">Í</span>
-        <span className="bg-[#b59f3b] text-white w-10 h-10 flex items-center justify-center font-bold text-lg rounded">A</span>
+        <span className="bg-[#b59f3b] text-white w-[8vw] h-[8vw] sm:w-10 sm:h-10 flex items-center justify-center font-bold text-[5vw] sm:text-lg rounded">D</span>
+        <span className="bg-[#b59f3b] text-white w-[8vw] h-[8vw] sm:w-10 sm:h-10 flex items-center justify-center font-bold text-[5vw] sm:text-lg rounded">Í</span>
+        <span className="bg-[#b59f3b] text-white w-[8vw] h-[8vw] sm:w-10 sm:h-10 flex items-center justify-center font-bold text-[5vw] sm:text-lg rounded">A</span>
       </h1>
 
 
@@ -55,7 +55,7 @@ const PantallaInicio: React.FC<Props> = ({ onJugar, modoClaro }) => {
 
       <button
         onClick={onJugar}
-        className="bg-[#538d4e] hover:bg-[#b59f3b] text-white border-none px-8 py-4 text-lg rounded-xl cursor-pointer transition-colors duration-300"
+        className="bg-[#538d4e] hover:bg-[#b59f3b] text-white border-none px-8 py-4 text-[5vw] sm:text-lg rounded-xl cursor-pointer transition-colors duration-300"
       >
         ¡Jugar!
       </button>
